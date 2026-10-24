@@ -30,7 +30,7 @@ class CuentaTest
 	void setUp() throws Exception 
 	{
 		double inicio = 20.0;
-		cta = new Cuenta(inicio);
+		cta = new Cuenta("0", "Roberto Lozano", inicio);
 	}
 
 	@AfterEach
