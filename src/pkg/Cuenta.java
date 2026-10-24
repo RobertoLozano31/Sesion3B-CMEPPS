@@ -18,6 +18,26 @@ public class Cuenta
         this.mMovimientos = new ArrayList<>();
     }
 
+    public String getNumero() 
+    {
+        return mNumero;
+    }
+
+    public void setNumero(String mNumero) 
+    {
+        this.mNumero = mNumero;
+    }
+
+    public String getTitular() 
+    {
+        return mTitular;
+    }
+
+    public void setTitular(String mTitular) 
+    {
+        this.mTitular = mTitular;
+    }
+
     public double getSaldo() 
     {
         return saldo;
@@ -30,16 +50,13 @@ public class Cuenta
 
     public List<Movimiento> getmMovimientos() 
     {
-    	mMovimientos.add(new Movimiento());
-    	mMovimientos.add(new Movimiento());
-    	mMovimientos.add(new Movimiento());
-    	
-    	return mMovimientos;
+        return mMovimientos;
     }
 
     public void ingreso(double i) 
     {
         this.saldo += i;
+        this.mMovimientos.add(new Movimiento(i, Movimiento.Signo.H, "Ingreso en cuenta"));
     }
 
     public void reintegro(double i) 
@@ -52,11 +69,20 @@ public class Cuenta
         else 
         {
             this.saldo -= i;
+            this.mMovimientos.add(new Movimiento(i, Movimiento.Signo.D, "Reintegro de cuenta"));
         }
     }
     
     public void mostrarBalance() 
     {
-    
+        System.out.println("\nMOVIMIENTOS DE LA CUENTA " + mNumero);
+        System.out.println("----------------------------------");
+        
+        for (Movimiento m : mMovimientos) 
+        {
+            System.out.println(m);
+        }
+        
+        System.out.println("Saldo final: " + saldo + "€\n");
     }
 }

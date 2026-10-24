@@ -1,6 +1,6 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;   
+import static org.junit.jupiter.api.Assertions.*;  
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -44,6 +44,7 @@ class CuentaTest
 	{
 		cta.ingreso(25);
 		assertEquals(45, cta.getSaldo());
+		assertEquals(1, cta.getmMovimientos().size(), "Debe registrarse 1 movimiento tras el ingreso");
 	}
 
 	@Test
@@ -51,5 +52,6 @@ class CuentaTest
 	{
 		cta.reintegro(15);
 		assertEquals(5, cta.getSaldo());
+		assertEquals(1, cta.getmMovimientos().size(), "Debe registrarse 1 movimiento tras el reintegro");
 	}
 }
